@@ -142,12 +142,11 @@ class DeviceHelper {
      * 批量读取
      * */
     readAll (sidList) {
-        console.log('[DeviceHelper:readAll] sidList=%s', sidList);
         if (!sidList || sidList.length === 0) {
             return;
         }
         for (let i=0; i<sidList.length; i++) {
-            this.read(sidList[i]);
+            this.read(sidList[i].sid);
         }
     }
 

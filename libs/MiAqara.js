@@ -98,9 +98,6 @@ class MiAqara {
         let data;
         try {
             data = JSON.parse(msg); // msg is a Buffer
-            if (data.hasOwnProperty('data')) {
-                data.data = JSON.parse(data.data);
-            }
         } catch (e) {
             console.error('Bad message: %s', msg);
             return;
@@ -110,12 +107,14 @@ class MiAqara {
 
         if (cmd === 'iam') { // whois callback
             this.gatewayHelper.uploadBySid(data.sid, data);
-            this.gatewayHelper.getIdList(data.sid); // 更新子设备列表
-        } else if(cmd === 'get_id_list_ack') { // get_id_list callback
+            this.gatewayHelper.discovery(data.sid); // 更新子设备列表
+        } else if(cmd === 'discovery_rsp') { // discovery callback
             this.gatewayHelper.uploadBySid(data.sid, data);
-            this.deviceMapsHelper.addOrUpdate(data.sid, data.data); // 更新网关与子设备的映射关系
-            this.deviceHelper.readAll(data.data); // 批量读取子设备详细信息
-            this.readCount += data.data.length;
+            if (data.hasOwnProperty('dev_list')) {
+                this.deviceMapsHelper.addOrUpdate(data.sid, data.dev_list); // 更新网关与子设备的映射关系
+                this.deviceHelper.readAll(data.dev_list); // 批量读取子设备详细信息
+                this.readCount += data.dev_list.length;
+            }
         } else if (cmd === 'report') { // 设备状态上报
             this._addOrUpdate(data);
         } else if (cmd === 'read_ack') { // read callback

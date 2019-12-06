@@ -77,15 +77,15 @@ class GatewayHelper {
     /**
      * 查询子设备id列表
      * */
-    getIdList (sid) {
-        console.log('[GatewayHelper:getIdList] sid:%s', sid);
+    discovery (sid) {
+        console.log('[GatewayHelper:discovery] sid:%s', sid);
         let gateway = this.getBySid(sid);
         if (gateway) {
             this.platform.send(gateway.ip, gateway.port, {
-                cmd: 'get_id_list'
+                cmd: 'discovery'
             });
         } else {
-            console.error('[GatewayHelper:getIdList] sid:%s is not exit', sid);
+            console.error('[GatewayHelper:discovery] sid:%s is not exit', sid);
         }
     }
 

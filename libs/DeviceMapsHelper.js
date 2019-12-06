@@ -29,7 +29,7 @@ class DeviceMapsHelper {
         for (let gatewaySid in this.deviceMaps) {
             let deviceIds = this.deviceMaps[gatewaySid];
             for (let i=0; i<deviceIds.length; i++) {
-                if (deviceIds[i] === deviceSid) {
+                if (deviceIds[i].sid === deviceSid) {
                     return gatewaySid;
                 }
             }

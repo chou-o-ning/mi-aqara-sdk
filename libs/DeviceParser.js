@@ -24,7 +24,8 @@ const DEVICE_MAP = {
     'sensor_motion.aq2': {name:'MotionSensor2', name_cn:'人体感应 第二代'},
     'sensor_switch.aq2': {name:'Button2', name_cn:'按钮 第二代'},
     'weather.v1': {name:'TemperatureAndHumiditySensor2', name_cn:'温度湿度传感器 第二代'},
-    'sensor_wleak.aq1': {name:'WaterDetector', name_cn:'水浸传感器'}
+    'sensor_wleak.aq1': {name:'WaterDetector', name_cn:'水浸传感器'},
+    'acpartner.v3': {name:'ACPartner', name_cn:'空调伴侣 升级版'}
 };
 
 const STATUS = {
