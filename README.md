@@ -3,6 +3,7 @@
 - 本项目从 jsonzhou 的 [mi-aqara-sdk 项目](https://github.com/zzyss86/mi-aqara-sdk)而来，主要是原工程很久没有维护，已经不适合绿米的最新设备和局域网协议。
 - 按照绿米的[AIOT论坛](http://bbs.opencloud.aqara.com:8080/jforum/posts/list/59.page)，局域网开发支持的网关目前只有：空调伴侣升级版（lumi.acpartner.v3），固件版本需达到1.4.1_109以上。jsonzhou 开发该项目时使用的网关，官方已经不支持。
 - 原先从 APP 获取网关 key 的方法已经无法使用，需要登录绿米的 AIOT 网站申请个人开发者才可以。
+- 公开的协议来自 [网关局域网通信协议V2.0](http://docs.opencloud.aqara.com/development/gateway-LAN-communication/)
 - 请注意！原先工程只在package.json中申明了 ISC 版权，而没有在每个源代码文件中添加。因此商业使用可能存在一定风险。
 
 ## 测试代码
