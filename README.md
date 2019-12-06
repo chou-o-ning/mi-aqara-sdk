@@ -1,4 +1,48 @@
-# mi-aqara-sdk
+# mi-aqara-sdk-ningmod
+
+- 本项目从 jsonzhou 的 [mi-aqara-sdk 项目](https://github.com/zzyss86/mi-aqara-sdk)而来，主要是原工程很久没有维护，已经不适合绿米的最新设备和局域网协议。
+- 按照绿米的[AIOT论坛](http://bbs.opencloud.aqara.com:8080/jforum/posts/list/59.page)，局域网开发支持的网关目前只有：空调伴侣升级版（lumi.acpartner.v3），固件版本需达到1.4.1_109以上。jsonzhou 开发该项目时使用的网关，官方已经不支持。
+- 原先从 APP 获取网关 key 的方法已经无法使用，需要登录绿米的 AIOT 网站申请个人开发者才可以。
+- 请注意！原先工程没有申明代码的版权，因此商业使用可能存在一定风险。
+
+## 测试代码
+```
+ mkdir aqara
+ cd aqara
+ git clone https://github.com/chou-o-ning/mi-aqara-sdk-ningmod
+ vim test.js
+```
+ 
+## test.js代码
+```
+const MiAqara = require('./mi-aqara-sdk-ningmod');
+
+MiAqara.create([{
+    sid: 'xxxxxxxxxxxx', // mac 地址
+    password: 'XXXXXXXXXXXXXXXX'  // key
+}], {
+    onReady (msg) { // 网关及子设备已找到, 多个网关可能会调用多次
+//  console.log('onReady', msg);
+    },
+    onMessage (msg) { // 所有消息类型
+//  console.log('onMessage', msg);
+    }
+});
+
+MiAqara.start();
+```
+
+## 运行测试代码
+```
+node test.js
+```
+如果测试的 PC 在网关的局域网内，允许测试代码后，可以看到网关的消息交互和心跳报文。
+
+## *********************************************************************************
+## 注意：以下内容来自原工程的README.md，很多内容已经不合时宜，但为了尊重原作者的版权，这里还是保留。
+## *********************************************************************************
+
+## mi-aqara-sdk
 
 作者：jsonzhou 2018/02/10
 
